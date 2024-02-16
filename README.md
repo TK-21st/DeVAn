@@ -5,12 +5,19 @@ This repository contains code and data related to submission to ACL ARR 2024 - _
 Data will be provided upon publication.
 
 ## Evaluation
-To reproduce evaluation results reported in the manuscript, please first ensure that you have downloaded the video data following steps listed above.
+
+### Inference
+To reproduce inference results reported in the manuscript, please first ensure that you have downloaded the video data following steps listed above.
 
 1. Video-ChatGPT: Please follow descriptions in [official repo](https://github.com/mbzuai-oryx/Video-ChatGPT), then modify `inference/videochatgpt/infer.py` based on your input/output/ckpt paths.
 2. ImageBind-LLM: Please follow descriptions in [official repo](https://github.com/OpenGVLab/LLaMA-Adapter/tree/main/imagebind_LLM), then modify `inference/infer_imagebind_llm.py` based on your input/output/ckpt paths.
 3. Video-LLaMA: Please follow descriptions in [official repo](https://github.com/DAMO-NLP-SG/Video-LLaMA), then modify `inference/infer_videollama.py` based on your input/output/ckpt paths.
 4. VideoCoCa: Code and ckpt for our finetuned VideoCoCa model will be released upon publication.
+
+### Evaluation
+To reproduce the evaluation results reported in the manuscript, please first ensure that you have completed the inference step above.
+
+
 
 ## Leaderboard
 We evaluate a range of different models on both video-to-text generation and text-to-video retrieval tasks.
