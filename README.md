@@ -17,6 +17,7 @@ To reproduce inference results reported in the manuscript, please first ensure t
 ### Evaluation
 To reproduce the evaluation results reported in the manuscript, please first ensure that you have completed the inference step above.
 
+For generation tasks, refer to `evaluation/ngram_metrics.py` and `evaluation/model_based_metrics.py` to compute N-gram based and model-based metrics for model inference results.
 
 
 ## Leaderboard
