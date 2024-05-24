@@ -4,7 +4,8 @@ This repository contains code and data related to submission to ACL ARR 2024 - _
 For more details on the dataset and example videos and annotations, refer to our [website](https://anonymous.4open.science/w/DeVAn/).
 
 ## Data
-Data will be provided upon publication.
+Please see `data/devan_acl24_release_v1.jsonl.gz` for V1 of release data. 
+V1 release contains 8170 videos, their corresponding youtube id, start/end timestamp, ground truth captions/summaries and predicted caption/summaries from models evaluated.
 
 ## Evaluation
 
