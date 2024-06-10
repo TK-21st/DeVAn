@@ -1,7 +1,7 @@
 # DeVAn: Dense Video Annotation for Video-Language Models
 This repository contains code and data related to submission to ACL ARR 2024 - _DeVAn: Dense Video Annotation for Video-Language Models_.
 
-For more details on the dataset and example videos and annotations, refer to our [website](https://anonymous.4open.science/w/DeVAn/).
+For more details on the dataset and example videos and annotations, refer to our [website](https://tk-21st.github.io/DeVAn/).
 
 ## Data
 Please see `data/devan_acl24_release_v1.jsonl.gz` for V1 of release data. 
