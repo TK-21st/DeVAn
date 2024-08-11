@@ -87,43 +87,49 @@
               <div class="is-size-5 publication-authors">
                 <!-- Paper authors -->
                 <span class="author-block">
-                  <!-- <img
-                    src="images/InfiMM_team_logo_original.png"
-                    style="width: 1em; vertical-align: middle"
-                    alt="Logo"
-                  /> -->
-                  <span class="mathvista">Anonymous Authors</span>
-                  <!-- <sup style="color: #6fbf73">1</sup>
-                  <sup style="color: #ed4b82">2</sup>
-                  <sup style="color: #ffac33">3</sup> -->
+                  <span class="author">Tingkai Liu</span><sup>1</sup>,
                 </span>
-
-                <!-- <span class="author-block">
-              InfiMM Team @ University of Texas at Austin, Institute of Automation, Chinese Academy of Sciences and ByteDance Ltd.
-            </span> -->
+                <span class="author-block">
+                  <span class="author">Yunzhe Tao</span><sup>1</sup>,
+                </span>
+                <span class="author-block">
+                  <span class="author">Haogeng Liu</span><sup>2,3</sup>,
+                </span>
+                <span class="author-block">
+                  <span class="author">Qihang Fan</span><sup>2,3</sup>,
+                </span>
+                <span class="author-block">
+                  <span class="author">Ding Zhou</span><sup>1</sup>
+                </span>
+                <br>
+                <span class="author-block">
+                  <span class="author">Huaibo Huang</span><sup>2</sup>,
+                </span>
+                <span class="author-block">
+                  <span class="author">Ran He</span><sup>2</sup>,
+                </span>
+                <span class="author-block">
+                  <span class="author">Hongxia Yang</span><sup>1</sup>
+                </span>
               </div>
-
-              <!-- <div class="is-size-5 publication-authors">
-                <span class="author-block"
-                  ><sup style="color: #6fbf73">1</sup>ByteDance,</span
-                ><br />
-                <span class="author-block"
-                  ><sup style="color: #ed4b82">2</sup>Institute of Automation,
-                  Chinese Academy of Sciences,</span
-                >
-                <span class="author-block"
-                  ><sup style="color: #ffac33">3</sup>University of Texas at
-                  Austin</span
-                >
-              </div> -->
-
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  <sup>1</sup>ByteDance, Inc.
+                </span><br />
+                <span class="author-block">
+                  <sup>2</sup>MAIS & CRIPAC, Institute of Automation, Chinese Academy of Sciences, China
+                </span><br />
+                <span class="author-block">
+                  <sup>3</sup>School of Artificial Intelligence, University of Chinese Academy of Sciences, Beijing, China
+                </span>
+              </div>
 
               <div class="column has-text-centered">
                 <div class="publication-links">
                   <!-- Arxiv PDF link -->
-                  <!-- <span class="link-block">
+                  <span class="link-block">
                     <a
-                      href="https://arxiv.org/abs/2311.11567"
+                      href="https://arxiv.org/abs/2310.05060"
                       target="_blank"
                       class="external-link button is-normal is-rounded is-dark"
                     >
@@ -132,12 +138,12 @@
                       </span>
                       <span>Paper</span>
                     </a>
-                  </span> -->
+                  </span>
 
                   <!-- Github link -->
                   <span class="link-block">
                     <a
-                      href="https://anonymous.4open.science/r/DeVAn"
+                      href="https://github.com/TK-21st/DeVAn"
                       target="_blank"
                       class="external-link button is-normal is-rounded is-dark"
                     >
@@ -148,22 +154,22 @@
                     </a>
                   </span>
 
-                    <!-- <span class="link-block">
-                      <a
-                        href="https://huggingface.co/datasets/Infi-MM/InfiMM-Eval"
-                        target="_blank"
-                        class="external-link button is-normal is-rounded is-dark"
-                      >
-                        <span class="icon">
-                          <img
-                            src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
-                            width="15px"
-                            height="15px"
-                          />
-                        </span>
-                        <span>Dataset</span>
-                      </a>
-                    </span> -->
+                  <span class="link-block">
+                    <a
+                      href="https://huggingface.co/datasets/TK-21st/DeVAn"
+                      target="_blank"
+                      class="external-link button is-normal is-rounded is-dark"
+                    >
+                      <span class="icon">
+                        <img
+                          src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
+                          width="15px"
+                          height="15px"
+                        />
+                      </span>
+                      <span>Dataset</span>
+                    </a>
+                  </span>
 
                   <!-- Papers with Code link -->
                   <!-- <span class="link-block">
@@ -223,12 +229,12 @@
             <h2 class="title is-3">Statistics</h2>
             <div class="content has-text-justified">
               <p>
-                DeVAn is a multi-modal dataset containing 8.5K video clips carefully selected from 
-                previously published YouTube-based video datasets (YouTube-8M and YT-Temporal-1B) 
-                that integrate visual and auditory information. Over the span of 10 months, 
-                a team of 24 human annotators (college and graduate level students) created 5 short 
-                captions (1 sentence each) and 5 long summaries (3-10  sentences) for each video clip, 
-                resulting in a rich and comprehensive human-annotated dataset that serves as a robust 
+                DeVAn is a multi-modal dataset containing 8.5K video clips carefully selected from
+                previously published YouTube-based video datasets (YouTube-8M and YT-Temporal-1B)
+                that integrate visual and auditory information. Over the span of 10 months,
+                a team of 24 human annotators (college and graduate level students) created 5 short
+                captions (1 sentence each) and 5 long summaries (3-10  sentences) for each video clip,
+                resulting in a rich and comprehensive human-annotated dataset that serves as a robust
                 ground truth for subsequent model training and evaluation.
               </p>
             </div>
@@ -600,7 +606,7 @@
             <h2 class="title is-3">Evaluation</h2>
             <div class="content has-text-justified">
               <p>
-                To evaluate on our DeVAn Benchmark, please refer to description in our github <a href="https://anonymous.4open.science/r/DeVAn/README.md">README</a> file. 
+                To evaluate on our DeVAn Benchmark, please refer to description in our github <a href="https://github.com/TK-21st/DeVAn/blob/main/README.md">README</a> file.
               </p>
             </div>
           </div>
@@ -613,7 +619,7 @@
       <div class="container is-max-desktop content">
         <h2 class="title">BibTeX</h2>
         <pre><code>@misc{han2023coremm,
-  title={InfiMM-Eval: Complex Open-Ended Reasoning Evaluation For Multi-Modal Large Language Models}, 
+  title={InfiMM-Eval: Complex Open-Ended Reasoning Evaluation For Multi-Modal Large Language Models},
   author={Xiaotian Han and Quanzeng You and Yongfei Liu and Wentao Chen and Huangjie Zheng and Khalil Mrini and Xudong Lin and Yiqi Wang and Bohan Zhai and Jianbo Yuan and Heng Wang and Hongxia Yang},
   year={2023},
   eprint={2311.11567},
@@ -635,7 +641,7 @@
                   >infimmbytedance@gmail.com</a
                 >
                 if you have any questions. -->
-                Under double-blind anonymous review.
+                Published at ACL'24 Main Track.
               </p>
             </div>
           </div>
