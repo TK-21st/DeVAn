@@ -1,0 +1,14 @@
+ids_fn: /path/to/video_ids
+video_dir: /output/video/file/path
+out_dir: /output/video/final/path
+verbose: True
+redownload: False
+shuffle: False
+nofilter: True
+skip_video: False
+thumbnail_width: 256
+language_filter:
+  filter_with_spacy: False
+sentence_bert:
+  filter_with_sentencebert: False
+max_workers: 10

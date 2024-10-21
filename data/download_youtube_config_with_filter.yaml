@@ -1,0 +1,18 @@
+ids_fn: /path/to/video_ids
+video_dir: /output/video/file/path
+out_dir: /output/video/meta/path
+verbose: True
+redownload: False
+shuffle: False
+nofilter: True
+skip_video: False
+thumbnail_width: 256
+language_filter:
+  filter_with_spacy: True
+  vocab: en_core_web_sm
+  threshold: 0.8
+sentence_bert:
+  filter_with_sentencebert: True
+  sentence_bert_model: 'sentence-transformers/all-MiniLM-L6-v2'
+  similarity_threshold: 0.5
+max_duration: 3  # minutes

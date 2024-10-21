@@ -1,7 +1,5 @@
 import typing as tp
 import re
-from sentence_transformers import SentenceTransformer
-from sklearn.metrics.pairwise import cosine_similarity
 
 RE_PARAGRAPH = re.compile(r"^\s*$", re.MULTILINE)
 
@@ -13,25 +11,28 @@ def get_paragraphs(desc: str) -> tp.List[str]:
     return [_.strip() for _ in RE_PARAGRAPH.split(desc)]
 
 def cleanup_description(
-    desc: str, 
+    desc: str,
     remove_empty_lines: bool = True,
     remove_url: bool = True,
     keep_only_first_paragraph: bool = False,
     filter_with_sentencebert: bool = True,
     title: str = None,
     similarity_threshold: float = .5,
-    sentence_bert_model: tp.Union[SentenceTransformer, str] = 'sentence-transformers/all-MiniLM-L6-v2'
+    sentence_bert_model: tp.Union["SentenceTransformer", str] = 'sentence-transformers/all-MiniLM-L6-v2'
 ) -> str:
     """Cleanup description of video
 
     1. removes url
     2. remove paragraphs that do not have high similarity with title via sentencebert
     """
+
     desc = desc.strip()
     if remove_url:
         desc = re.sub(r'https?://\S+', "", desc)
 
     if filter_with_sentencebert:
+        from sentence_transformers import SentenceTransformer
+        from sklearn.metrics.pairwise import cosine_similarity
         assert title is not None, "Title cannot be None if filter with sentence_bert"
         if isinstance(sentence_bert_model, str):
             sentence_bert_model = SentenceTransformer(sentence_bert_model)
@@ -48,7 +49,7 @@ def cleanup_description(
                 return False
             return True
         desc = "\n".join(list(filter(
-            lambda paragraph: filter_by_similarity(title, paragraph, similarity_threshold), 
+            lambda paragraph: filter_by_similarity(title, paragraph, similarity_threshold),
             get_paragraphs(desc)
         )))
 

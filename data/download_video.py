@@ -39,7 +39,6 @@ class YoutubeConfig:
     video_dir: str
     out_dir: str
     thumbnail_width: int = 256
-    max_duration: float = 3.
     verbose: bool = True
     redownload: bool = False
     shuffle: bool = False
@@ -115,18 +114,19 @@ def download_id(video_id: str, cache_path: str, config: YoutubeConfig):
         )
 
     # Lang detect
-    text = info['title']
-    if info['description'] is not None:
-        text += info['description']
+    if config.language_filter.filter_with_spacy:
+        text = info['title']
+        if info['description'] is not None:
+            text += info['description']
 
-    res = NLP(text)
-    info['_lang_prob'] = _prob = res._.language_score
-    info['_lang'] = _lang = str(res._.language)
-    if (_lang != 'en') or (_prob < 0.8):
-        info['_failreason'] = 'maybe not english'
-        if config.verbose:
-            print(f"Skipping bc langdetect: lang is {_lang} p={_prob:.3f}", flush=True)
-        return info
+        res = NLP(text)
+        info['_lang_prob'] = _prob = res._.language_score
+        info['_lang'] = _lang = str(res._.language)
+        if (_lang != 'en') or (_prob < 0.8):
+            info['_failreason'] = 'maybe not english'
+            if config.verbose:
+                print(f"Skipping bc langdetect: lang is {_lang} p={_prob:.3f}", flush=True)
+            return info
 
     info['video_fn'] = video_fn
     if should_download_video:
@@ -188,18 +188,27 @@ if __name__ == "__main__":
     parser.add_argument(
         '--config',
         type=str,
-        help='Config file.'
+        help='Config file (yaml).',
+        required=True
     )
     args = parser.parse_args()
     with open(args.config, "r") as f:
         config = YoutubeConfig(**yaml.safe_load(f))
+
+    # check paths
+    assert os.path.exists(config.ids_fn)
+    video_dir = config.video_dir
+    out_dir = config.out_dir
+    os.makedirs(video_dir, exist_ok=True)
+    os.makedirs(out_dir, exist_ok=True)
+
 
     if config.language_filter.filter_with_spacy is True:
         import spacy
         import spacy_fastlang
         NLP = spacy.load(config.language_filter.vocab)
         NLP.add_pipe("language_detector")
-    
+
     if config.sentence_bert.filter_with_sentencebert is True:
         from sentence_transformers import SentenceTransformer
         if isinstance(config.sentence_bert.sentence_bert_model, str):
@@ -207,24 +216,23 @@ if __name__ == "__main__":
                 config.sentence_bert.sentence_bert_model
             )
 
-    channels_video_ids = []
-    df = pd.read_json(config.ids_fn, lines=True)
-    channels_video_ids = df['meta'].apply(lambda m: m['yt_id']).values.tolist()
+    df = pd.read_json(str(config.ids_fn), lines=True, compression="gzip")
+    unique_video_ids = list(set(df['meta'].apply(lambda m: m['yt_id']).values.tolist()))
 
     if config.shuffle:
-        random.shuffle(channels_video_ids)
+        random.shuffle(unique_video_ids)
 
     results = []
     with tempfile.TemporaryDirectory() as tmp_dir:
-        pbar = tqdm(total=len(channels_video_ids))
-        for video_id in channels_video_ids:
+        pbar = tqdm(total=len(unique_video_ids))
+        for video_id in unique_video_ids:
             pbar.set_description(video_id)
             try:
                 info = download_id(video_id, cache_path=tmp_dir, config=config)
                 pbar.update()
                 info['youtube_id'] = video_id
                 results.append(info)
-            except ValueError as e:
+            except Exception as e:
                 print(f"Failed to download {video_id}: {e}")
                 pbar.update()
                 continue
