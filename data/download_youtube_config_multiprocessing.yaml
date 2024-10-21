@@ -1,6 +1,6 @@
 ids_fn: /path/to/video_ids
 video_dir: /output/video/file/path
-out_dir: /output/video/meta/path
+out_dir: /output/video/final/path
 verbose: True
 redownload: False
 shuffle: False

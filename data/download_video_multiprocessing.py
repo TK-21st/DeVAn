@@ -38,6 +38,14 @@ if __name__ == "__main__":
     with open(args.config, "r") as f:
         config = YoutubeConfigMultiProcess(**yaml.safe_load(f))
 
+
+    # check exists
+    assert os.path.exists(config.ids_fn)
+    video_dir = config.video_dir
+    out_dir = config.out_dir
+    os.makedirs(video_dir, exist_ok=True)
+    os.makedirs(out_dir, exist_ok=True)
+
     if config.language_filter.filter_with_spacy:
         import spacy
         import spacy_fastlang
